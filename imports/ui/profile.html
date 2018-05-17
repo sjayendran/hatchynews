@@ -1,0 +1,35 @@
+<template name="profile">
+  <div class="container">
+    <header>
+      <div class="ui mini orange inverted menu">
+          <div class="item">
+              <h4 class="ui header">HatchyNews</h4>
+          </div>
+          <a class="item" href="/">
+            Top Stories
+          </a>
+          {{#if currentUser}}
+            <a class="active item">
+              Profile
+            </a>
+          {{/if}}
+          <div class="item">
+              {{> loginButtons}}
+          </div>  
+      </div>
+    </header>
+    <h3>Profile for {{currentUser.username}}</h3>
+    <h4 class="ui dividing header">Saved Stories</h4>
+    {{#if hasSavedStories}}
+      <div class="ui comments">
+        <ul>
+          {{#each savedStories}}
+            {{> savedStory storyDetail=this.storyObj}}
+          {{/each}}
+        </ul>
+      </div>
+    {{else}}
+      <i>No stories saved yet...</i>
+    {{/if}}
+  </div>
+</template>

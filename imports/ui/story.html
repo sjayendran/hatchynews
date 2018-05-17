@@ -1,0 +1,35 @@
+<template name="story">
+    {{#if Template.subscriptionsReady}}
+        {{#if storyDetail}}
+            <li>
+                <div class="comment">
+                    <div class="content">
+                        <a class="author" href="{{storyDetail.url}}" target="blank">{{storyDetail.title}}</a>
+                        <div class="metadata">
+                        <span class="date">{{cleanedTimestamp storyDetail.time}}</span>
+                        </div>
+                        <div class="text">
+                        {{#if storyDetail.score}}
+                            {{storyDetail.score}} points
+                        {{/if}}
+                        by {{storyDetail.by}} |
+                        {{#if storyDetail.descendants}}
+                            {{storyDetail.descendants}} Comments
+                        {{/if}}
+                        
+                        </div>
+                        <div class="actions">
+                            {{#if currentUser}}
+                                {{#if storyAlreadySaved}}
+                                    <a class="unsaveStory">Unsave</a>
+                                {{else}}
+                                    <a class="saveStory">Save</a>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {{/if}}
+    {{/if}}
+</template>

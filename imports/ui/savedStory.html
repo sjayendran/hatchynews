@@ -1,0 +1,28 @@
+<template name="savedStory">
+    {{#with storyDetail}}
+        <li>
+            <div class="comment">
+                <div class="content">
+                    <a class="author" href="{{storyDetail.url}}" target="blank">{{storyDetail.title}}</a>
+                    <div class="metadata">
+                    <span class="date">{{cleanedTimestamp storyDetail.time}}</span>
+                    </div>
+                    <div class="text">
+                    {{#if storyDetail.score}}
+                        {{storyDetail.score}} points
+                    {{/if}}
+                    by {{storyDetail.by}} |
+                    {{#if storyDetail.descendants}}
+                        {{storyDetail.descendants}} Comments
+                    {{/if}}
+                    </div>
+                    <div class="actions">
+                        {{#if currentUser}}
+                            <a class="unsaveStory">Unsave</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/with}}
+</template>
